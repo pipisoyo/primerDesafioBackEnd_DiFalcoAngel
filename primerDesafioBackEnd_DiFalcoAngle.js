@@ -1,6 +1,7 @@
 class ProductManager {
     constructor() {
         this.products = [];
+        this.idCounter = 0;// agrego variable , cada vez q se genera un id se incrementa en 1 , evitando duplicar
     }
 
     addProduct(title, description, price, thumbnail, code, stock) {
@@ -23,13 +24,8 @@ class ProductManager {
     }
 
     generarId() {
-        let id = 0;
-        if (this.products.length === 0) {
-            id = 1;
-        } else {
-            id = this.products[this.products.length - 1].id + 1;
-        }
-        return id;
+        this.idCounter++;
+        return this.idCounter;
     }
 
     getProducts() {// para obtener los productos
